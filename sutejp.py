@@ -6,7 +6,6 @@ from random_tools import random_ua
 class Sutejp:
     def generate(self):
         session = requests.Session()
-        mail_url_list = []
         ua = random_ua()
         parsed_ua = user_agent_parser.Parse(ua)
         headers =  {
