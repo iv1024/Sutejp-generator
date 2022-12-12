@@ -58,10 +58,6 @@ class Sutejp:
             "upgrade-insecure-requests": "1"
         }
         result = session.post("https://sute.jp/signup", data=data, headers=headers, cookies=response.cookies, allow_redirects=True)
-        soup = BeautifulSoup(result.content, features="html.parser")
-        for mails in soup.select("li.message"):
-            data_id = mails.get("data-id")
-            mail_url_list.append(f"https://sute.jp/inbox/{data_id}")
         self.status_code = result.status_code
         if self.status_code in (200, 201):
             return True
