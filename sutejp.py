@@ -4,6 +4,10 @@ from ua_parser import user_agent_parser
 from random_tools import random_ua
 
 class Sutejp:
+    
+    def __init__(self):
+        pass
+
     def generate(self):
         session = requests.Session()
         ua = random_ua()
@@ -59,7 +63,7 @@ class Sutejp:
         result = session.post("https://sute.jp/signup", data=data, headers=headers, cookies=response.cookies, allow_redirects=True)
         self.status_code = result.status_code
         if self.status_code in (200, 201):
-            return True
+            return self.username
         elif self.status_code == 403:
             raise Exception("403 Forbidden")
         else:
